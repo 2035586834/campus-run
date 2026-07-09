@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>恭喜考入沈阳工业大学！</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:linear-gradient(135deg,#1a3a5c 0%,#2d5f8a 40%,#3a7cb8 70%,#1a3a5c 100%);
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+  color:#fff;overflow:hidden;
+}
+.container{
+  width:90%;max-width:400px;text-align:center;padding:30px 20px;
+  animation:fadeIn 0.6s ease-out;
+}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+.logo{
+  width:80px;height:80px;border-radius:50%;
+  background:linear-gradient(135deg,#ffd700,#ffaa00);
+  margin:0 auto 20px;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 20px rgba(255,215,0,0.3);
+  font-size:36px;font-weight:bold;color:#1a3a5c;
+}
+.school-name{
+  font-size:22px;font-weight:bold;margin-bottom:8px;
+  letter-spacing:2px;
+}
+.congrats{
+  font-size:16px;margin-bottom:30px;opacity:0.9;
+  line-height:1.6;
+}
+.wechat-box{
+  background:rgba(255,255,255,0.15);border-radius:16px;
+  padding:24px 20px;margin-bottom:20px;
+  backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.2);
+}
+.wechat-label{font-size:14px;opacity:0.8;margin-bottom:12px}
+.wechat-id{
+  font-size:28px;font-weight:bold;letter-spacing:3px;
+  background:rgba(255,215,0,0.2);border-radius:8px;
+  padding:10px 16px;margin-bottom:16px;
+  border:2px dashed rgba(255,215,0,0.6);
+}
+.copy-btn{
+  background:linear-gradient(135deg,#ffd700,#ffaa00);
+  color:#1a3a5c;font-size:16px;font-weight:bold;
+  padding:12px 40px;border-radius:30px;border:none;
+  cursor:pointer;transition:all 0.3s;
+  box-shadow:0 4px 15px rgba(255,215,0,0.3);
+}
+.copy-btn:hover{transform:scale(1.05);box-shadow:0 6px 20px rgba(255,215,0,0.4)}
+.copy-btn:active{transform:scale(0.95)}
+.copy-tip{
+  font-size:12px;opacity:0.6;margin-top:8px;
+}
+.guide-btn{
+  background:rgba(255,255,255,0.1);color:#fff;
+  font-size:15px;padding:12px 30px;border-radius:30px;
+  border:1px solid rgba(255,255,255,0.3);cursor:pointer;
+  transition:all 0.3s;margin-top:16px;
+  display:inline-block;
+}
+.guide-btn:hover{background:rgba(255,255,255,0.2);transform:scale(1.03)}
+.arrow{font-size:14px;margin-left:4px}
+.footer{font-size:11px;opacity:0.4;margin-top:24px;line-height:1.5}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="logo">工</div>
+  <div class="school-name">沈阳工业大学</div>
+  <div class="congrats">🎉 恭喜你考入沈阳工业大学！<br>中央校区新生攻略，学姐帮你搞定一切</div>
+  <div class="wechat-box">
+    <div class="wechat-label">学姐微信号（添加获取更多帮助）</div>
+    <div class="wechat-id">SYGYDX1949</div>
+    <button class="copy-btn" onclick="copyWechat()">一键复制微信号</button>
+    <div class="copy-tip" id="copyTip">点击按钮复制，然后打开微信搜索添加</div>
+  </div>
+  <a class="guide-btn" id="guideLink">
+    查看完整新生攻略<span class="arrow">→</span>
+  </a>
+  <div class="footer">7月辽宁出录取结果后第一时间更新<br>宿舍·食堂·快递·军训·选课·交通全覆盖</div>
+</div>
+<script>
+function copyWechat(){
+  var id='SYGYDX1949';
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(id).then(function(){
+      document.getElementById('copyTip').textContent='✅ 已复制！打开微信搜索添加吧';
+      document.querySelector('.copy-btn').textContent='已复制 ✓';
+    });
+  }else{
+    var ta=document.createElement('textarea');
+    ta.value=id;ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy');
+      document.getElementById('copyTip').textContent='✅ 已复制！打开微信搜索添加吧';
+      document.querySelector('.copy-btn').textContent='已复制 ✓';
+    }catch(e){document.getElementById('copyTip').textContent='请手动复制：SYGYDX1949'}
+    document.body.removeChild(ta);
+  }
+}
+// 跳转到新生攻略页面
+var guideLink=document.getElementById('guideLink');
+guideLink.href='https://2035586834.github.io/campus-run/sut-guide.html';
+guideLink.onclick=function(e){
+  // 如果在微信内置浏览器中可能无法跳转，提示用户
+  // 正常情况下直接跳转
+};
+</script>
+</body>
+</html>
