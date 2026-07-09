@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>恭喜考入大连外国语大学!</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Microsoft YaHei','PingFang SC',sans-serif; background:linear-gradient(135deg,#185FA5,#0C447C); min-height:100vh; display:flex; align-items:center; justify-content:center; color:#fff; }
+
+  .modal {
+    background:#fff;
+    border-radius:16px;
+    padding:30px 24px;
+    max-width:380px;
+    width:90%;
+    text-align:center;
+    color:#333;
+    box-shadow:0 8px 40px rgba(0,0,0,0.15);
+  }
+
+  .modal .emoji { font-size:48px; margin-bottom:12px; }
+  .modal h2 { font-size:22px; font-weight:700; color:#185FA5; margin-bottom:12px; }
+  .modal .desc { font-size:14px; color:#555; line-height:1.7; margin-bottom:20px; }
+  .modal .wechat-box { background:#E6F1FB; border-radius:12px; padding:16px; margin-bottom:16px; }
+  .modal .wechat-box .label { font-size:13px; color:#185FA5; font-weight:600; margin-bottom:8px; }
+  .modal .wechat-box .id { font-size:20px; font-weight:700; color:#185FA5; letter-spacing:3; margin-bottom:10px; }
+  .modal .copy-btn { display:inline-block; background:#185FA5; color:#fff; padding:10px 28px; border-radius:20px; font-size:14px; font-weight:600; cursor:pointer; border:none; transition:all 0.2s; }
+  .modal .copy-btn:hover { background:#0C447C; }
+  .modal .copy-btn.success { background:#2D8B53; }
+  .modal .tip { font-size:12px; color:#999; margin-top:6px; }
+
+  .modal .view-btn { display:inline-block; background:#F5B84D; color:#fff; padding:12px 40px; border-radius:24px; font-size:15px; font-weight:700; cursor:pointer; border:none; margin-top:12px; transition:all 0.2s; }
+  .modal .view-btn:hover { background:#BA7517; }
+
+  .modal .footer-text { font-size:11px; color:#aaa; margin-top:20px; }
+</style>
+</head>
+<body>
+
+<div class="modal">
+  <div class="emoji">&#127891;</div>
+  <h2>恭喜你成功考入<br>大连外国语大学!</h2>
+  <div class="desc">
+    为方便各位新生提前了解入学流程、宿舍安排、报到材料、军训须知、校园生活、选课指南等全部入学相关事宜，特建立新生咨询渠道。<br><br>
+    添加学姐微信，进新生答疑群，有问题随时问!
+  </div>
+
+  <div class="wechat-box">
+    <div class="label">学姐微信号</div>
+    <div class="id">DLWGY111</div>
+    <button class="copy-btn" id="copyBtn" onclick="copyWechat()">复制微信号</button>
+    <div class="tip">复制后打开微信搜索添加</div>
+  </div>
+
+  <button class="view-btn" onclick="viewGuide()">查看完整新生攻略 &#8594;</button>
+
+  <div class="footer-text">大外万事通 · 在校生学姐 · 2026</div>
+</div>
+
+<script>
+function copyWechat() {
+  var id = 'DLWGY111';
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(id).then(function() {
+      showSuccess();
+    });
+  } else {
+    var textarea = document.createElement('textarea');
+    textarea.value = id;
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
+    showSuccess();
+  }
+}
+
+function showSuccess() {
+  var btn = document.getElementById('copyBtn');
+  btn.textContent = '已复制!';
+  btn.classList.add('success');
+  setTimeout(function() {
+    btn.textContent = '复制微信号';
+    btn.classList.remove('success');
+  }, 2000);
+}
+
+function viewGuide() {
+  window.location.href = 'https://2035586834.github.io/campus-run/guide.html';
+}
+</script>
+
+</body>
+</html>
