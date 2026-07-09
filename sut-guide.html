@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>沈阳工业大学 新生攻略 2026</title>
+<style>
+:root{
+  --primary:#1a3a5c;
+  --primary-light:#2d5f8a;
+  --accent:#ffd700;
+  --accent-light:#ffaa00;
+  --bg:#0d1b2a;
+  --card-bg:rgba(255,255,255,0.06);
+  --text:#e8e8e8;
+  --text-light:rgba(255,255,255,0.7);
+  --border:rgba(255,255,255,0.1);
+  --radius:16px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;
+  line-height:1.7;overflow-x:hidden;
+}
+/* 顶部英雄区 */
+.hero{
+  background:linear-gradient(135deg,#1a3a5c 0%,#3a7cb8 50%,#1a3a5c 100%);
+  padding:40px 20px 30px;text-align:center;
+  position:relative;
+}
+.hero::after{
+  content:'';position:absolute;bottom:-20px;left:0;right:0;
+  height:40px;background:var(--bg);
+  border-radius:50% 50% 0 0 / 100% 100% 0 0;
+}
+.hero-badge{
+  display:inline-block;background:var(--accent);color:var(--primary);
+  font-size:12px;font-weight:bold;padding:4px 14px;border-radius:20px;
+  margin-bottom:16px;
+}
+.hero h1{font-size:24px;margin-bottom:4px;letter-spacing:1px}
+.hero h2{font-size:14px;color:var(--accent);opacity:0.9;margin-bottom:12px}
+.hero p{font-size:13px;color:var(--text-light)}
+
+/* 快速导航 */
+.nav-bar{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:8px;
+  padding:24px 16px 16px;
+}
+.nav-item{
+  background:var(--card-bg);border:1px solid var(--border);
+  border-radius:24px;padding:6px 16px;font-size:12px;
+  cursor:pointer;transition:all 0.3s;color:var(--text-light);
+}
+.nav-item:hover,.nav-item.active{
+  background:rgba(255,215,0,0.15);color:var(--accent);
+  border-color:rgba(255,215,0,0.3);
+}
+
+/* 卡片区 */
+.section{padding:16px;margin-bottom:8px}
+.card{
+  background:var(--card-bg);border:1px solid var(--border);
+  border-radius:var(--radius);padding:20px 18px;margin-bottom:12px;
+  transition:all 0.3s;
+}
+.card:hover{border-color:rgba(255,215,0,0.2);transform:translateY(-2px)}
+
+.card-header{
+  display:flex;align-items:center;gap:10px;margin-bottom:14px;
+}
+.card-icon{
+  width:36px;height:36px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;
+}
+.card-title{font-size:17px;font-weight:bold}
+.card-subtitle{font-size:11px;color:var(--text-light);margin-left:auto}
+
+.info-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);
+  font-size:14px;
+}
+.info-row:last-child{border-bottom:none}
+.info-label{color:var(--text-light);font-size:13px;min-width:80px}
+.info-value{font-weight:bold;color:var(--text)}
+
+.tag{
+  display:inline-block;padding:3px 10px;border-radius:12px;
+  font-size:11px;margin:3px 2px;
+}
+.tag-gold{background:rgba(255,215,0,0.2);color:var(--accent)}
+.tag-blue{background:rgba(58,124,184,0.2);color:#7ab8e0}
+.tag-green{background:rgba(76,175,80,0.2);color:#81c784}
+.tag-red{background:rgba(244,67,54,0.2);color:#ef9a9a}
+
+.tip-box{
+  background:rgba(255,215,0,0.08);border:1px dashed rgba(255,215,0,0.3);
+  border-radius:12px;padding:12px 14px;margin-top:12px;font-size:13px;
+  line-height:1.6;
+}
+.tip-box::before{content:'💡 ';font-size:14px}
+
+.list-item{
+  padding:6px 0;font-size:14px;display:flex;align-items:flex-start;gap:8px;
+}
+.list-dot{
+  width:6px;height:6px;border-radius:50%;background:var(--accent);
+  margin-top:7px;flex-shrink:0;
+}
+
+/* 底部 */
+.footer{
+  text-align:center;padding:24px 20px 30px;font-size:12px;
+  color:var(--text-light);border-top:1px solid var(--border);
+}
+.footer .wechat{
+  display:inline-block;background:rgba(255,215,0,0.2);
+  color:var(--accent);padding:8px 20px;border-radius:24px;
+  font-size:14px;font-weight:bold;margin:12px 0;
+}
+
+/* 餐饮楼层图 */
+.floor-plan{
+  display:flex;gap:8px;margin-top:8px;
+}
+.floor{
+  flex:1;background:rgba(255,255,255,0.05);
+  border-radius:10px;padding:10px 8px;text-align:center;
+  border:1px solid var(--border);
+}
+.floor-num{
+  font-size:20px;font-weight:bold;color:var(--accent);
+  margin-bottom:4px;
+}
+.floor-desc{font-size:11px;color:var(--text-light);line-height:1.4}
+
+/* 公寓对比 */
+.compare-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;
+}
+.compare-cell{
+  background:rgba(255,255,255,0.05);border-radius:10px;
+  padding:10px;text-align:center;border:1px solid var(--border);
+}
+.compare-val{font-size:16px;font-weight:bold;margin-bottom:2px}
+.compare-label{font-size:11px;color:var(--text-light)}
+
+/* 校园地图概览 */
+.map-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:10px;
+}
+.map-cell{
+  background:rgba(255,255,255,0.05);border-radius:8px;
+  padding:8px 6px;text-align:center;font-size:12px;
+  border:1px solid var(--border);line-height:1.3;
+}
+.map-cell .icon{font-size:16px;margin-bottom:2px}
+.map-cell .name{font-size:11px;color:var(--accent)}
+</style>
+</head>
+<body>
+
+<!-- 顶部英雄区 -->
+<div class="hero">
+  <div class="hero-badge">中央校区专属</div>
+  <h1>沈阳工业大学 新生攻略</h1>
+  <h2>2026 · 学姐整理版</h2>
+  <p>宿舍·食堂·快递·交通·军训·选课全覆盖</p>
+</div>
+
+<!-- 快速导航 -->
+<div class="nav-bar">
+  <div class="nav-item" onclick="scrollTo('dorm')">🏠 宿舍</div>
+  <div class="nav-item" onclick="scrollTo('food')">🍽️ 餐饮</div>
+  <div class="nav-item" onclick="scrollTo('express')">📦 快递</div>
+  <div class="nav-item" onclick="scrollTo('transport')">🚇 交通</div>
+  <div class="nav-item" onclick="scrollTo('military')">🎖️ 军训</div>
+  <div class="nav-item" onclick="scrollTo('study')">📚 学业</div>
+</div>
+
+<!-- 宿舍 -->
+<div class="section" id="dorm">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon" style="background:rgba(58,124,184,0.3)">🏠</div>
+      <div class="card-title">宿舍 · 公寓区</div>
+      <div class="card-subtitle">A/B/C三区·24栋楼</div>
+    </div>
+    <div class="compare-grid">
+      <div class="compare-cell">
+        <div class="compare-val" style="color:var(--accent)">4人间</div>
+        <div class="compare-label">上床下桌·1200元/年</div>
+      </div>
+      <div class="compare-cell">
+        <div class="compare-val" style="color:#7ab8e0">6人间</div>
+        <div class="compare-label">上床下桌·900元/年</div>
+      </div>
+    </div>
+    <div class="info-row" style="margin-top:10px">
+      <span class="info-label">空调</span>
+      <span class="info-value"><span class="tag tag-green">有空调</span></span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">独立卫浴</span>
+      <span class="info-value"><span class="tag tag-red">无</span> 公共卫生间+洗漱间</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">熄灯</span>
+      <span class="info-value">22:30（周末23:30）</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">封楼</span>
+      <span class="info-value">22:20 · 早6:00来电</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">限电</span>
+      <span class="info-value">约1000W · 超额自缴</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">公共设施</span>
+      <span class="info-value">洗衣机·吹风机·自助热水器</span>
+    </div>
+    <div class="tip-box">
+      A/C区男女混住，B区纯女生区。每月有配额电费，超额在"沈工大后勤"微信公众号缴费。每栋一楼有自动贩卖机。宿舍随机分配，迎新系统可查床位。
+    </div>
+  </div>
+</div>
+
+<!-- 餐饮 -->
+<div class="section" id="food">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon" style="background:rgba(76,175,80,0.3)">🍽️</div>
+      <div class="card-title">餐饮 · 三个食堂</div>
+      <div class="card-subtitle">南北食堂+超市美食</div>
+    </div>
+    <!-- 南食堂 -->
+    <div style="margin-bottom:12px">
+      <div style="font-size:14px;font-weight:bold;color:var(--accent);margin-bottom:6px">南食堂（三层）</div>
+      <div class="floor-plan">
+        <div class="floor">
+          <div class="floor-num">1F</div>
+          <div class="floor-desc">清真食堂<br>份饭为主</div>
+        </div>
+        <div class="floor">
+          <div class="floor-num">2F</div>
+          <div class="floor-desc">鸡公煲<br>麻辣烫<br>砂锅·快餐</div>
+        </div>
+        <div class="floor">
+          <div class="floor-num">3F</div>
+          <div class="floor-desc">中餐<br>西餐<br>风味多样</div>
+        </div>
+      </div>
+    </div>
+    <!-- 北食堂 -->
+    <div style="margin-bottom:12px">
+      <div style="font-size:14px;font-weight:bold;color:#7ab8e0;margin-bottom:6px">北食堂（靠近A区）</div>
+      <div class="list-item"><div class="list-dot"></div>饺子·汉堡·麻辣香锅·炒饭</div>
+      <div class="list-item"><div class="list-dot"></div>温馨粥道·份饭·单炒</div>
+    </div>
+    <!-- 超市美食 -->
+    <div>
+      <div style="font-size:14px;font-weight:bold;color:#81c784;margin-bottom:6px">信之正超市二楼 · 美食广场</div>
+      <div class="list-item"><div class="list-dot"></div>营业至晚上10点，晚吃饭也能搞定</div>
+    </div>
+    <div class="tip-box">
+      需刷学生卡消费。北食堂份饭多价格亲民，南食堂窗口丰富选择多。
+    </div>
+  </div>
+</div>
+
+<!-- 快递 -->
+<div class="section" id="express">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon" style="background:rgba(255,152,0,0.3)">📦</div>
+      <div class="card-title">快递 · 收发指南</div>
+      <div class="card-subtitle">校内驿站+校外自取</div>
+    </div>
+    <div style="font-size:14px;font-weight:bold;margin-bottom:8px;color:var(--accent)">信之正超市一楼（校内主驿站）</div>
+    <div class="list-item"><div class="list-dot"></div>菜鸟驿站 · 小麦公社 · 京东自提</div>
+    <div class="list-item"><div class="list-dot"></div>邮政小包 · 明信片 · 圆通 · 天天</div>
+    <div style="font-size:14px;font-weight:bold;margin-bottom:8px;margin-top:10px;color:#7ab8e0">校门口自取</div>
+    <div class="list-item"><div class="list-dot"></div>顺丰 · 宅急送等（校门口当面取）</div>
+    <div class="info-row" style="margin-top:10px">
+      <span class="info-label">收件地址</span>
+      <span class="info-value" style="font-size:12px">沈阳市经开区沈辽西路111号 沈阳工业大学</span>
+    </div>
+    <div class="tip-box">
+      大件行李建议报到日前寄到校内菜鸟驿站，轻便小件直接带即可。信之正超市在B/C区附近，A区同学走远一些。
+    </div>
+  </div>
+</div>
+
+<!-- 交通 -->
+<div class="section" id="transport">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon" style="background:rgba(0,188,212,0.3)">🚇</div>
+      <div class="card-title">交通 · 到校方式</div>
+      <div class="card-subtitle">地铁直达·接站专车</div>
+    </div>
+    <div class="info-row">
+      <span class="info-label">地铁1号线</span>
+      <span class="info-value">中央大街站（步行到校约10分钟）</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">地铁3号线</span>
+      <span class="info-value">工业大学站（校门口直达）</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">报到日接站</span>
+      <span class="info-value"><span class="tag tag-gold">沈阳站+北站+机场</span></span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">公交</span>
+      <span class="info-value">多路公交途经中央校区</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">校区地址</span>
+      <span class="info-value" style="font-size:12px">经开区沈辽西路111号</span>
+    </div>
+    <div class="tip-box">
+      3号线工业大学站就在校门口，最方便！1号线中央大街站下车步行约10分钟。报到当天学校在各交通枢纽安排接站大巴。
+    </div>
+  </div>
+</div>
+
+<!-- 军训 -->
+<div class="section" id="military">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon" style="background:rgba(244,67,54,0.3)">🎖️</div>
+      <div class="card-title">军训 · 新生须知</div>
+      <div class="card-subtitle">约2-3周</div>
+    </div>
+    <div class="info-row">
+      <span class="info-label">军训服</span>
+      <span class="info-value">学校统一发放（帽子腰带不能丢）</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">内搭要求</span>
+      <span class="info-value">深色最好黑色，不能带帽子</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">袜子</span>
+      <span class="info-value"><span class="tag tag-red">必须纯黑色</span></span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">鞋子</span>
+      <span class="info-value">穿发的军训鞋，可垫软鞋垫</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">防晒</span>
+      <span class="info-value">沈阳9月紫外线强，必备防晒霜</span>
+    </div>
+    <div class="tip-box">
+      军训期间多喝水、注意防晒。内搭必须是深色无帽款，袜子纯黑。开学典礼+军训汇报一般在9月中旬。
+    </div>
+  </div>
+</div>
+
+<!-- 学业 -->
+<div class="section" id="study">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon" style="background:rgba(156,39,176,0.3)">📚</div>
+      <div class="card-title">学业 · 选课与拓展</div>
+      <div class="card-subtitle">学分制·可辅修</div>
+    </div>
+    <div class="info-row">
+      <span class="info-label">教务系统</span>
+      <span class="info-value">jwzx.sut.edu.cn</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">选课制度</span>
+      <span class="info-value">学分制 · 公选课+通识课</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">辅修/微专业</span>
+      <span class="info-value"><span class="tag tag-green">可辅修学士学位</span> <span class="tag tag-blue">可修微专业</span></span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">社团</span>
+      <span class="info-value">30+社团 · 9月招新嘉年华</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">迎新系统</span>
+      <span class="info-value">企业微信预报到+编班查宿舍</span>
+    </div>
+    <div class="tip-box">
+      教学楼A-G共7座，内部U型联通，连堂课不用出楼！WiFi覆盖校内GD_WLAN免费使用，联通网卡约35元/人。
+    </div>
+  </div>
+</div>
+
+<!-- 校园生活 -->
+<div class="section" id="life">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon" style="background:rgba(255,215,0,0.3)">🏫</div>
+      <div class="card-title">校园 · 生活速览</div>
+      <div class="card-subtitle">中央校区全貌</div>
+    </div>
+    <div class="map-grid">
+      <div class="map-cell">
+        <div class="icon">📖</div>
+        <div class="name">图书馆</div>
+        地下超市
+      </div>
+      <div class="map-cell">
+        <div class="icon">🏟️</div>
+        <div class="name">运动场</div>
+        南北操场
+      </div>
+      <div class="map-cell">
+        <div class="icon">🛒</div>
+        <div class="name">信之正</div>
+        超市+快递
+      </div>
+      <div class="map-cell">
+        <div class="icon">🚿</div>
+        <div class="name">南浴室</div>
+        青春广场后
+      </div>
+      <div class="map-cell">
+        <div class="icon">🚿</div>
+        <div class="name">北浴室</div>
+        近A区宿舍
+      </div>
+      <div class="map-cell">
+        <div class="icon">🏪</div>
+        <div class="name">校外超市</div>
+        大商佳+新天地
+      </div>
+    </div>
+    <div class="info-row" style="margin-top:12px">
+      <span class="info-label">洗浴</span>
+      <span class="info-value">刷卡洗浴·南/北两个浴室</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">校园卡</span>
+      <span class="info-value">食堂消费+洗浴+购电</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">WiFi</span>
+      <span class="info-value">GD_WLAN免费·联通网卡35元</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">饮水</span>
+      <span class="info-value">净水器扫码·大桶水10元送上门</span>
+    </div>
+    <div class="tip-box">
+      东门为正门（报到入口），南门/北门各有校外超市。图书馆楼下有超市，A区同学最近的购物点。
+    </div>
+  </div>
+</div>
+
+<!-- 底部微信号 -->
+<div class="footer">
+  <p>学姐微信号，有问题随时问</p>
+  <div class="wechat" onclick="copyWechat()">SYGYDX1949（点击复制）</div>
+  <p style="margin-top:8px;font-size:11px;opacity:0.5">攻略信息基于多来源交叉验证，如有变动以学校官方通知为准</p>
+</div>
+
+<script>
+function scrollTo(id){
+  var el=document.getElementById(id);
+  if(el){el.scrollIntoView({behavior:'smooth',block:'start'})}
+}
+function copyWechat(){
+  var id='SYGYDX1949';
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(id);
+  }else{
+    var ta=document.createElement('textarea');ta.value=id;
+    ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy')}catch(e){}
+    document.body.removeChild(ta);
+  }
+  var wechatEl=document.querySelector('.wechat');
+  wechatEl.textContent='✅ 已复制';
+  setTimeout(function(){wechatEl.textContent='SYGYDX1949（点击复制')},2000);
+}
+</script>
+</body>
+</html>
